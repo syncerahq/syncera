@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syncera Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#11100e;
+      --bg-2:#171614;
+      --panel:#1d1b18;
+      --panel-2:#23201c;
+      --border:#2a2723;
+      --text:#f4efe6;
+      --muted:#b5aca1;
+      --soft:#8f867b;
+      --accent:#e6dccd;
+      --accent-2:#d6c8b3;
+      --max:1160px;
+      --radius:20px;
+      --shadow:0 20px 60px rgba(0,0,0,.25);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.03), transparent 26%),
+        linear-gradient(180deg, #120f0d 0%, #11100e 100%);
+      color:var(--text);
+      font-family:Inter,system-ui,sans-serif;
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+    .eyebrow{
+      color:var(--soft);
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      font-size:.72rem;
+      font-weight:600;
+    }
+
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(17,16,14,.82);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      max-width:var(--max); margin:0 auto; padding:18px 24px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:14px}
+    .mark{
+      width:34px; height:28px; display:grid; grid-template-columns:repeat(5,1fr); gap:4px; align-items:end;
+    }
+    .mark span{
+      display:block; border-radius:999px; background:var(--accent); opacity:.92;
+    }
+    .mark span:nth-child(1){height:11px; opacity:.48}
+    .mark span:nth-child(2){height:18px; opacity:.68}
+    .mark span:nth-child(3){height:28px}
+    .mark span:nth-child(4){height:16px; opacity:.8}
+    .mark span:nth-child(5){height:22px; opacity:.58}
+    .brand-copy{display:flex; flex-direction:column; gap:2px}
+    .brand-name{
+      font-size:.84rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    }
+    .brand-sub{
+      font-size:.62rem; color:var(--soft); letter-spacing:.18em; text-transform:uppercase;
+    }
+    .nav-links{display:flex; gap:24px; align-items:center}
+    .nav-links a{
+      color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; font-weight:500;
+    }
+    .nav-links .cta{
+      color:#11100e; background:var(--accent); padding:11px 16px; border-radius:999px;
+    }
+
+    .hero{padding:78px 0 48px}
+    .hero-grid{
+      display:grid; grid-template-columns:1.08fr .92fr; gap:24px; align-items:stretch;
+    }
+    .hero-copy{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:32px;
+      padding:42px;
+      box-shadow:var(--shadow);
+    }
+    h1{
+      margin:16px 0 18px;
+      font-family:"DM Serif Display", serif;
+      font-weight:400;
+      line-height:1.02;
+      letter-spacing:-.03em;
+      font-size:clamp(2.7rem,6vw,5.2rem);
+      max-width:10ch;
+    }
+    .hero-copy p{
+      max-width:60ch; color:var(--muted); font-size:1.02rem; margin:0 0 16px;
+    }
+    .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin:26px 0 24px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height:48px; padding:0 20px; border-radius:999px; font-weight:700;
+      text-transform:uppercase; letter-spacing:.12em; font-size:.75rem;
+      transition:.18s ease;
+    }
+    .btn-primary{background:var(--accent); color:#11100e}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-secondary{border:1px solid rgba(255,255,255,.12); color:var(--text)}
+    .hero-mini{
+      display:flex; gap:18px; flex-wrap:wrap; color:var(--soft); font-size:.8rem;
+      border-top:1px solid rgba(255,255,255,.08); padding-top:18px;
+    }
+
+    .hero-side{
+      display:grid;
+      gap:16px;
+    }
+    .hero-card{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:28px;
+      padding:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      box-shadow:var(--shadow);
+    }
+    .hero-card h3{
+      margin:10px 0 8px;
+      font-size:1rem;
+      line-height:1.35;
+    }
+    .hero-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .stat{
+      padding:16px 0;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .stat:last-child{border-bottom:none}
+    .stat strong{
+      display:block; font-size:2.2rem; line-height:1; letter-spacing:-.04em;
+    }
+    .stat span{
+      display:block; margin-top:7px; color:var(--muted); font-size:.9rem;
+    }
+
+    section{padding:26px 0 72px}
+    .section-head{max-width:760px; margin-bottom:28px}
+    h2{
+      margin:12px 0 10px; font-family:"DM Serif Display", serif; font-size:clamp(2rem,4vw,3rem);
+      font-weight:400; line-height:1.06; letter-spacing:-.03em;
+    }
+    .section-head p{color:var(--muted); max-width:62ch}
+
+    .grid-3{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:24px;
+    }
+    .card h3{margin:10px 0 8px; font-size:1rem}
+    .card p{margin:0; color:var(--muted); font-size:.92rem}
+    .kicker{
+      color:var(--soft); text-transform:uppercase; letter-spacing:.18em; font-size:.68rem; font-weight:700;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1.04fr .96fr;
+      gap:18px;
+    }
+
+    .simple-list{
+      display:grid; gap:14px; margin-top:20px;
+    }
+    .simple-item{
+      display:grid; grid-template-columns:28px 1fr; gap:14px;
+      padding:16px 0; border-top:1px solid rgba(255,255,255,.07);
+    }
+    .simple-item:first-child{border-top:none}
+    .num{
+      width:28px; height:28px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12); display:grid; place-items:center;
+      color:var(--soft); font-size:.74rem;
+    }
+
+    .quote{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+    .quote blockquote{
+      margin:0 0 14px; font-family:"DM Serif Display", serif; font-size:clamp(1.35rem,3vw,2rem); line-height:1.3;
+    }
+    .quote p{margin:0; color:var(--soft); font-size:.88rem}
+
+    .trust-band{
+      background:var(--panel-2);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:20px 24px;
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:22px;
+    }
+    .trust-band strong{
+      display:block;
+      font-size:.75rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--accent-2);
+      margin-bottom:6px;
+    }
+    .trust-band span{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .cta-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:var(--shadow);
+    }
+    .cta-panel ul{
+      margin:16px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+    .cta-panel li{margin:8px 0}
+
+    footer{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:28px 0 40px;
+      color:var(--soft);
+      font-size:.8rem;
+    }
+    .footer-inner{
+      display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap;
+    }
+
+    @media (max-width: 920px){
+      .hero-grid,.grid-3,.two-col{grid-template-columns:1fr}
+      .hero-copy,.hero-card,.quote,.cta-panel{padding:24px}
+      .nav-links a:not(.cta){display:none}
+      h1{max-width:none}
+    }
+    @media (max-width: 620px){
+      .hero{padding-top:42px}
+      .nav-inner,.wrap{padding-left:18px; padding-right:18px}
+      h1{font-size:2.55rem}
+      .hero-copy,.hero-card,.quote,.cta-panel{border-radius:24px; padding:22px}
+      .hero-actions{flex-direction:column}
+      .btn{width:100%}
+      .trust-band{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="brand-copy">
+          <div class="brand-name">Syncera</div>
+          <div class="brand-sub">Intelligence</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#why">Why it matters</a>
+        <a href="#approach">How it works</a>
+        <a href="#study">Current study</a>
+        <a class="cta" href="survey.html">Take survey</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Audience perception intelligence</div>
+          <h1>Do film ratings actually reflect what people experience?</h1>
+          <p>Syncera Intelligence is conducting an independent study to measure where official film ratings align — and where they do not.</p>
+          <p>If you have watched at least one film in the past year, your response helps build real data that can improve how content is classified, recommended, and trusted.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="survey.html">Take the survey</a>
+            <a class="btn btn-secondary" href="#why">Learn more</a>
+          </div>
+
+          <div class="hero-mini">
+            <span>Anonymous</span>
+            <span>6–8 minutes</span>
+            <span>No personal identifying information collected</span>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="hero-card">
+            <div class="eyebrow">Why now</div>
+            <div class="stat">
+              <strong>58 years</strong>
+              <span>since the U.S. theatrical rating framework was last meaningfully overhauled.</span>
+            </div>
+            <div class="stat">
+              <strong>Real people</strong>
+              <span>are still expected to trust labels that may not fully reflect lived audience experience.</span>
+            </div>
+            <div class="stat">
+              <strong>One study</strong>
+              <span>can begin proving where official labels and actual audience perception diverge.</span>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="eyebrow">What this study does</div>
+            <h3>Measures the gap between official ratings and audience reality.</h3>
+            <p>This is not about random opinion polling. It is structured perception data designed to show where content trust breaks down.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Why it matters</div>
+          <h2>People deserve better than vague labels and guesswork.</h2>
+          <p>Film ratings influence what we watch, what kids are exposed to, and how platforms recommend content — yet many people feel those ratings do not always match reality.</p>
+          <p>This study is designed to measure that gap using real audience experiences, not assumptions.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="kicker">Clarity</div>
+            <h3>Data you can believe in</h3>
+            <p>We focus on measurable audience perception, not generic opinions and not industry guesswork.</p>
+          </article>
+          <article class="card">
+            <div class="kicker">Alignment</div>
+            <h3>Signals rooted in real people</h3>
+            <p>We capture what viewers actually experience so systems can better reflect human reality.</p>
+          </article>
+          <article class="card">
+            <div class="kicker">Accountability</div>
+            <h3>Better decisions, fewer blind spots</h3>
+            <p>Our work helps expose mismatch, improve trust, and support smarter content governance.</p>
+          </article>
+        </div>
+
+        <div class="trust-band">
+          <div>
+            <strong>Survey trust markers</strong>
+            <span>Anonymous participation · 6–8 minutes · Independent study</span>
+          </div>
+          <a class="btn btn-primary" href="survey.html">Start the survey</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="wrap two-col">
+        <div class="card">
+          <div class="eyebrow">How Syncera works</div>
+          <h2>Simple enough to understand. Serious enough to matter.</h2>
+          <div class="simple-list">
+            <div class="simple-item">
+              <div class="num">1</div>
+              <div>
+                <strong>Collect</strong>
+                <div style="color:var(--muted)">Gather structured audience responses from real people across demographic groups.</div>
+              </div>
+            </div>
+            <div class="simple-item">
+              <div class="num">2</div>
+              <div>
+                <strong>Analyze</strong>
+                <div style="color:var(--muted)">Identify where official labels, platform assumptions, and lived audience perception stop matching up.</div>
+              </div>
+            </div>
+            <div class="simple-item">
+              <div class="num">3</div>
+              <div>
+                <strong>Inform</strong>
+                <div style="color:var(--muted)">Turn those findings into actionable intelligence for better decisions and better outcomes.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote">
+          <div class="eyebrow">Founder perspective</div>
+          <blockquote>“Syncera exists to make content decisions more honest, more useful, and more human.”</blockquote>
+          <p>Sincere insights. Smarter decisions. Better outcomes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="study">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Current study</div>
+          <h2>Study SI-001: film rating perception</h2>
+          <p>Our first public study measures whether official U.S. film ratings match what real audiences say they actually experience.</p>
+        </div>
+
+        <div class="two-col">
+          <div class="cta-panel">
+            <div class="kicker">What to expect</div>
+            <ul>
+              <li>Anonymous participation</li>
+              <li>About 6–8 minutes to complete</li>
+              <li>No right or wrong answers</li>
+              <li>Designed for clarity on mobile and desktop</li>
+            </ul>
+          </div>
+
+          <div class="cta-panel">
+            <div class="kicker">Why take this survey?</div>
+            <ul>
+              <li>Your response contributes to real audience-based data.</li>
+              <li>It helps improve how content is labeled and understood.</li>
+              <li>It supports more accurate and accountable media systems.</li>
+            </ul>
+            <div style="margin-top:22px;">
+              <a class="btn btn-primary" href="survey.html">Take the survey</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>Syncera Intelligence · Audience perception intelligence</div>
+      <div>Chicago, IL · 2026</div>
+    </div>
+  </footer>
+</body>
+</html>

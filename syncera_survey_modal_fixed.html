@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syncera Intelligence — Study SI-001</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#11100e;
+      --bg-2:#171614;
+      --panel:#1d1b18;
+      --border:#2a2723;
+      --text:#f4efe6;
+      --muted:#b5aca1;
+      --soft:#8f867b;
+      --accent:#e6dccd;
+      --danger:#cf8b84;
+      --ok:#b5cba8;
+      --radius:18px;
+      --max:820px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#120f0d,#11100e 50%);
+      color:var(--text);
+      font-family:Inter,system-ui,sans-serif;
+      line-height:1.6;
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .topbar{
+      position:sticky; top:0; z-index:40;
+      backdrop-filter:blur(10px);
+      background:rgba(17,16,14,.88);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .topbar-inner{
+      max-width:1100px; margin:0 auto; padding:16px 20px;
+      display:flex; justify-content:space-between; align-items:center; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .mark{
+      width:30px; height:24px; display:grid; grid-template-columns:repeat(5,1fr); gap:3px; align-items:end;
+    }
+    .mark span{display:block; background:var(--accent); border-radius:999px}
+    .mark span:nth-child(1){height:10px; opacity:.48}
+    .mark span:nth-child(2){height:16px; opacity:.66}
+    .mark span:nth-child(3){height:24px}
+    .mark span:nth-child(4){height:15px; opacity:.78}
+    .mark span:nth-child(5){height:19px; opacity:.56}
+    .brand strong{
+      font-size:.82rem; letter-spacing:.16em; text-transform:uppercase;
+    }
+    .brand small{
+      display:block; color:var(--soft); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;
+    }
+    .back{color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.12em}
+    .hero{
+      padding:42px 0 22px;
+    }
+    .eyebrow{
+      color:var(--soft); text-transform:uppercase; letter-spacing:.22em; font-size:.7rem; font-weight:600;
+    }
+    h1{
+      margin:12px 0 12px;
+      font-family:"DM Serif Display", serif;
+      font-weight:400;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      font-size:clamp(2rem,4vw,3.35rem);
+    }
+    .hero p{color:var(--muted); max-width:62ch; margin:0 0 16px}
+    .info{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:20px;
+    }
+    .info-card{
+      background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px;
+    }
+    .info-card strong{display:block; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); margin-bottom:8px}
+    .info-card span{color:var(--text); font-size:.92rem}
+    .consent{
+      margin-top:18px;
+      background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.08);
+      border-radius:16px; padding:16px; color:var(--muted); font-size:.88rem;
+    }
+
+    .survey{
+      padding:18px 0 60px;
+    }
+    .progress-shell{
+      position:sticky; top:65px; z-index:30;
+      padding:14px 0 10px;
+      background:linear-gradient(180deg, rgba(17,16,14,.96), rgba(17,16,14,.88));
+      backdrop-filter: blur(10px);
+    }
+    .progress-row{
+      display:flex; justify-content:space-between; color:var(--soft); font-size:.74rem; text-transform:uppercase; letter-spacing:.12em;
+      margin-bottom:8px;
+    }
+    .progress{
+      height:8px; background:rgba(255,255,255,.06); border-radius:999px; overflow:hidden;
+    }
+    .progress > div{
+      width:0%; height:100%; background:var(--accent); transition:width .25s ease;
+    }
+
+    form{margin-top:18px}
+    .section-title{
+      margin:26px 0 12px; color:var(--soft); text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; font-weight:700;
+    }
+    .question{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:20px;
+      margin-bottom:14px;
+    }
+    .meta{
+      display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;
+    }
+    .pill{
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--soft); border-radius:999px; padding:4px 10px; font-size:.68rem; text-transform:uppercase; letter-spacing:.12em;
+    }
+    .required{color:var(--accent)}
+    .question h3{
+      margin:0 0 6px; font-size:1rem; line-height:1.4;
+    }
+    .question p.desc{
+      margin:0 0 14px; color:var(--muted); font-size:.9rem;
+    }
+    .options{display:grid; gap:10px}
+    label.option{
+      display:flex; gap:10px; align-items:flex-start;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px; padding:14px;
+      background:rgba(255,255,255,.01);
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    label.option:hover{border-color:rgba(255,255,255,.18); background:rgba(255,255,255,.025)}
+    input[type="radio"], input[type="checkbox"]{
+      margin-top:3px; accent-color:var(--accent);
+    }
+    textarea{
+      width:100%; min-height:110px; resize:vertical;
+      border-radius:14px; border:1px solid rgba(255,255,255,.1);
+      background:#131210; color:var(--text);
+      padding:14px; font:inherit;
+    }
+    .actions{
+      display:flex; justify-content:space-between; gap:12px; margin-top:22px; flex-wrap:wrap;
+      position:sticky; bottom:0; padding:14px 0 0;
+      background:linear-gradient(180deg, rgba(17,16,14,0), rgba(17,16,14,1) 35%);
+    }
+    button{
+      border:none; border-radius:999px; min-height:48px; padding:0 18px;
+      font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:.74rem;
+      cursor:pointer;
+    }
+    .primary{background:var(--accent); color:#11100e}
+    .secondary{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.12)}
+    .helper{
+      color:var(--soft); font-size:.85rem; margin-top:8px;
+    }
+    .success{
+      display:none; margin-top:18px; background:rgba(181,203,168,.07); border:1px solid rgba(181,203,168,.22);
+      padding:18px; border-radius:16px; color:var(--ok);
+    }
+
+    
+    .modal-overlay{
+      position:fixed; inset:0; background:rgba(0,0,0,.58);
+      display:none; align-items:center; justify-content:center;
+      padding:20px; z-index:100;
+    }
+    .modal-overlay.show{display:flex}
+    .modal{
+      width:min(520px, 100%);
+      background:#181614;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:0 25px 80px rgba(0,0,0,.45);
+      text-align:center;
+    }
+    .modal-mark{
+      width:56px; height:56px; margin:0 auto 16px;
+      border-radius:999px; border:1px solid rgba(255,255,255,.12);
+      display:grid; place-items:center; font-size:1.2rem; color:var(--accent);
+    }
+    .modal h2{
+      margin:0 0 10px;
+      font-family:"DM Serif Display", serif;
+      font-weight:400;
+      line-height:1.1;
+      letter-spacing:-.02em;
+      font-size:2rem;
+    }
+    .modal p{
+      margin:0 0 20px; color:var(--muted);
+    }
+    .modal .btn-row{
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+    }
+
+    @media (max-width:760px){
+      .info{grid-template-columns:1fr}
+      .actions{flex-direction:column}
+      button{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+        <div>
+          <strong>Syncera</strong>
+          <small>Intelligence</small>
+        </div>
+      </div>
+      <a class="back" href="index.html">Back to site</a>
+    </div>
+  </div>
+
+  <div class="wrap hero">
+    <div class="eyebrow">Study SI-001 · Wave 1</div>
+    <h1>Help measure the gap between official film ratings and real audience experience.</h1>
+    <p>This study collects anonymous audience perception data. Your response helps build better evidence for smarter content decisions, better parental guidance, and more accountable classification systems.</p>
+
+    <div class="info">
+      <div class="info-card"><strong>Time</strong><span>About 6–8 minutes</span></div>
+      <div class="info-card"><strong>Privacy</strong><span>Anonymous participation</span></div>
+      <div class="info-card"><strong>Eligibility</strong><span>Watched at least one film in the past 12 months</span></div>
+    </div>
+
+    <div class="consent">
+      By continuing, you confirm that you are at least 13 years old and understand that your answers are anonymous and may be used in aggregated research findings by Syncera Intelligence.
+    </div>
+  </div>
+
+  <div class="wrap survey">
+    <div class="progress-shell">
+      <div class="progress-row">
+        <span id="sectionLabel">Section 1 of 4</span>
+        <span id="progressLabel">0% complete</span>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+    </div>
+
+    <form id="surveyForm" action="https://formspree.io/f/xkokvwvv" method="POST">
+      <input type="hidden" name="_subject" value="Syncera Intelligence — Study SI-001 submission">
+      <div class="section-title">Section 1 · Eligibility + context</div>
+
+      <div class="question">
+        <div class="meta"><span class="pill">Q1</span><span class="pill required">Required</span></div>
+        <h3>Have you watched at least one film in the past 12 months?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="watched" value="yes" required> Yes</label>
+          <label class="option"><input type="radio" name="watched" value="no"> No</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="meta"><span class="pill">Q2</span><span class="pill required">Required</span></div>
+        <h3>How often do you check a film’s rating before watching it or letting someone else watch it?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="check" value="always" required> Always</label>
+          <label class="option"><input type="radio" name="check" value="usually"> Usually</label>
+          <label class="option"><input type="radio" name="check" value="sometimes"> Sometimes</label>
+          <label class="option"><input type="radio" name="check" value="rarely"> Rarely</label>
+          <label class="option"><input type="radio" name="check" value="never"> Never</label>
+        </div>
+      </div>
+
+      <div class="section-title">Section 2 · Trust in the system</div>
+
+      <div class="question">
+        <div class="meta"><span class="pill">Q3</span><span class="pill required">Required</span></div>
+        <h3>How much trust do you have in the current U.S. film rating system?</h3>
+        <p class="desc">Choose the option closest to your honest view.</p>
+        <div class="options">
+          <label class="option"><input type="radio" name="trust" value="none" required> No trust at all</label>
+          <label class="option"><input type="radio" name="trust" value="low"> Low trust</label>
+          <label class="option"><input type="radio" name="trust" value="mixed"> Mixed / unsure</label>
+          <label class="option"><input type="radio" name="trust" value="mostly"> Mostly trust it</label>
+          <label class="option"><input type="radio" name="trust" value="complete"> Complete trust</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="meta"><span class="pill">Q4</span><span class="pill required">Required</span></div>
+        <h3>In your experience, how often does a film’s content match what you expected from its rating?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="match" value="almost_always" required> Almost always</label>
+          <label class="option"><input type="radio" name="match" value="usually"> Usually</label>
+          <label class="option"><input type="radio" name="match" value="half"> About half the time</label>
+          <label class="option"><input type="radio" name="match" value="rarely"> Rarely</label>
+          <label class="option"><input type="radio" name="match" value="dont_pay_attention"> I don’t pay attention to this</label>
+        </div>
+      </div>
+
+      <div class="section-title">Section 3 · Where the system misses</div>
+
+      <div class="question">
+        <div class="meta"><span class="pill">Q5</span><span class="pill required">Required</span></div>
+        <h3>Which types of content do you feel are most likely to be poorly reflected in current film ratings?</h3>
+        <p class="desc">Select all that apply.</p>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="types" value="violence"> Violence</label>
+          <label class="option"><input type="checkbox" name="types" value="sexual_content"> Sexual content</label>
+          <label class="option"><input type="checkbox" name="types" value="nudity"> Nudity</label>
+          <label class="option"><input type="checkbox" name="types" value="language"> Language</label>
+          <label class="option"><input type="checkbox" name="types" value="substance_use"> Drug or alcohol use</label>
+          <label class="option"><input type="checkbox" name="types" value="disturbing_themes"> Disturbing themes</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <div class="meta"><span class="pill">Q6</span><span class="pill required">Required</span></div>
+        <h3>How much reform does the current rating system need?</h3>
+        <div class="options">
+          <label class="option"><input type="radio" name="reform" value="no_change" required> No change</label>
+          <label class="option"><input type="radio" name="reform" value="minor_updates"> Minor updates</label>
+          <label class="option"><input type="radio" name="reform" value="meaningful_reform"> Meaningful reform</label>
+          <label class="option"><input type="radio" name="reform" value="major_overhaul"> Major overhaul</label>
+          <label class="option"><input type="radio" name="reform" value="not_sure"> Not sure</label>
+        </div>
+      </div>
+
+      <div class="section-title">Section 4 · Final voice</div>
+
+      <div class="question">
+        <div class="meta"><span class="pill">Q7</span><span class="pill">Optional</span></div>
+        <h3>Is there a specific film that felt inaccurately rated to you?</h3>
+        <p class="desc">You can name the title and briefly say why.</p>
+        <textarea name="example" placeholder="Example: I felt this movie was rated too lightly because..."></textarea>
+      </div>
+
+      <div class="question">
+        <div class="meta"><span class="pill">Q8</span><span class="pill">Optional</span></div>
+        <h3>Anything else you want platforms, studios, or parents to understand about content trust?</h3>
+        <textarea name="final" placeholder="Share any final thought here..."></textarea>
+      </div>
+
+      <div class="actions">
+        <button class="secondary" type="button" onclick="window.location.href='index.html'">Back</button>
+        <button class="primary" type="submit">Submit survey</button>
+      </div>
+      <div class="helper">After you create your Formspree form, replace REPLACE_WITH_YOUR_FORM_ID in this file with your real form ID.</div>
+    </form>
+  </div>
+
+
+  <div class="modal-overlay" id="thankYouModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="thankYouTitle">
+      <div class="modal-mark">✓</div>
+      <h2 id="thankYouTitle">Thank you for participating.</h2>
+      <p>Your response was submitted to Syncera Intelligence. You just helped build better evidence for clearer, safer, more accountable content decisions.</p>
+      <div class="btn-row">
+        <button class="primary" type="button" id="closeModalBtn">Close</button>
+        <button class="secondary" type="button" onclick="window.location.href='index.html'">Back to site</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('surveyForm');
+    const progressBar = document.getElementById('progressBar');
+    const progressLabel = document.getElementById('progressLabel');
+    const sectionLabel = document.getElementById('sectionLabel');
+    const thankYouModal = document.getElementById('thankYouModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    const requiredGroups = ['watched','check','trust','match','reform'];
+    const inputs = form.querySelectorAll('input, textarea');
+
+    function updateProgress(){
+      let completed = 0;
+      requiredGroups.forEach(name => {
+        if (form.querySelector(`input[name="${name}"]:checked`)) completed++;
+      });
+      const pct = Math.round((completed / requiredGroups.length) * 100);
+      progressBar.style.width = pct + '%';
+      progressLabel.textContent = pct + '% complete';
+
+      if (completed <= 1) sectionLabel.textContent = 'Section 1 of 4';
+      else if (completed <= 2) sectionLabel.textContent = 'Section 2 of 4';
+      else if (completed <= 4) sectionLabel.textContent = 'Section 3 of 4';
+      else sectionLabel.textContent = 'Section 4 of 4';
+    }
+
+    function openModal(){
+      thankYouModal.classList.add('show');
+      thankYouModal.setAttribute('aria-hidden', 'false');
+      closeModalBtn.focus();
+    }
+
+    function closeModal(){
+      thankYouModal.classList.remove('show');
+      thankYouModal.setAttribute('aria-hidden', 'true');
+    }
+
+    function firstMissingRequiredGroup(){
+      for (const name of requiredGroups){
+        if (!form.querySelector(`input[name="${name}"]:checked`)){
+          return form.querySelector(`input[name="${name}"]`);
+        }
+      }
+      return null;
+    }
+
+    inputs.forEach(el => el.addEventListener('change', updateProgress));
+    updateProgress();
+
+    closeModalBtn.addEventListener('click', closeModal);
+    thankYouModal.addEventListener('click', (e) => {
+      if (e.target === thankYouModal) closeModal();
+    });
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+
+      const firstMissing = firstMissingRequiredGroup();
+      if (firstMissing){
+        alert('Please answer all required questions before submitting.');
+        firstMissing.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      const submitBtn = form.querySelector('.primary');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          form.reset();
+          updateProgress();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          openModal();
+        } else {
+          const data = await response.json().catch(() => ({}));
+          const message = data.errors?.map(err => err.message).join(' ') || 'Submission failed. Please try again.';
+          alert(message);
+        }
+      } catch (err) {
+        alert('Submission failed. Please check your connection and try again.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit survey';
+      }
+    });
+  </script>
+
+</body>
+</html>

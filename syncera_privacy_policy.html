@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Syncera Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#11100e;
+      --panel:#1d1b18;
+      --border:#2a2723;
+      --text:#f4efe6;
+      --muted:#b5aca1;
+      --soft:#8f867b;
+      --accent:#e6dccd;
+      --max:900px;
+      --radius:20px;
+      --shadow:0 20px 60px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.03), transparent 26%),
+        linear-gradient(180deg, #120f0d 0%, #11100e 100%);
+      color:var(--text);
+      font-family:Inter,system-ui,sans-serif;
+      line-height:1.7;
+    }
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(17,16,14,.82);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      max-width:1100px; margin:0 auto; padding:18px 24px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:14px}
+    .mark{
+      width:34px; height:28px; display:grid; grid-template-columns:repeat(5,1fr); gap:4px; align-items:end;
+    }
+    .mark span{
+      display:block; border-radius:999px; background:var(--accent); opacity:.92;
+    }
+    .mark span:nth-child(1){height:11px; opacity:.48}
+    .mark span:nth-child(2){height:18px; opacity:.68}
+    .mark span:nth-child(3){height:28px}
+    .mark span:nth-child(4){height:16px; opacity:.8}
+    .mark span:nth-child(5){height:22px; opacity:.58}
+    .brand-copy{display:flex; flex-direction:column; gap:2px}
+    .brand-name{
+      font-size:.84rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+    }
+    .brand-sub{
+      font-size:.62rem; color:var(--soft); letter-spacing:.18em; text-transform:uppercase;
+    }
+    .nav-links{display:flex; gap:24px; align-items:center}
+    .nav-links a{
+      color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.12em; font-weight:500;
+    }
+    .nav-links .cta{
+      color:#11100e; background:var(--accent); padding:11px 16px; border-radius:999px;
+    }
+    main{padding:56px 0 72px}
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:32px;
+      padding:40px;
+      box-shadow:var(--shadow);
+      margin-bottom:20px;
+    }
+    .eyebrow{
+      color:var(--soft);
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      font-size:.72rem;
+      font-weight:600;
+    }
+    h1{
+      margin:14px 0 14px;
+      font-family:"DM Serif Display", serif;
+      font-weight:400;
+      line-height:1.04;
+      letter-spacing:-.03em;
+      font-size:clamp(2.4rem,5vw,4rem);
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      max-width:62ch;
+      font-size:1rem;
+    }
+    .meta{
+      margin-top:18px;
+      color:var(--soft);
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .policy{
+      display:grid;
+      gap:16px;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:24px 24px 22px;
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:1rem;
+      letter-spacing:.02em;
+    }
+    p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+    p:last-child{margin-bottom:0}
+    ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+    }
+    li{margin:7px 0}
+    .highlight{
+      color:var(--text);
+      font-weight:600;
+    }
+    .contact-box{
+      background:rgba(230,220,205,.04);
+      border:1px solid rgba(230,220,205,.10);
+    }
+    footer{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding:28px 0 40px;
+      color:var(--soft);
+      font-size:.8rem;
+      margin-top:30px;
+    }
+    .footer-inner{
+      display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap;
+    }
+    @media (max-width: 620px){
+      .nav-inner,.wrap{padding-left:18px; padding-right:18px}
+      .nav-links a:not(.cta){display:none}
+      .hero,.card{padding:22px}
+      h1{font-size:2.35rem}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="brand-copy">
+          <div class="brand-name">Syncera</div>
+          <div class="brand-sub">Intelligence</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="survey.html">Survey</a>
+        <a class="cta" href="survey.html">Take survey</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <div class="eyebrow">Privacy Policy</div>
+        <h1>Your trust matters here.</h1>
+        <p>Syncera Intelligence is committed to protecting the privacy of people who visit this site and participate in our research. This page explains what we collect, what we do not collect, and how survey responses are used.</p>
+        <div class="meta">Effective date: April 2026</div>
+      </section>
+
+      <section class="policy">
+        <div class="card">
+          <h2>1. What this site is for</h2>
+          <p>Syncera Intelligence conducts independent audience perception research. Our current public survey collects responses about film rating perception and related media trust topics.</p>
+        </div>
+
+        <div class="card">
+          <h2>2. What we collect</h2>
+          <p>When you submit a survey, we may collect the responses you provide, such as:</p>
+          <ul>
+            <li>Film viewing habits</li>
+            <li>Opinions about rating systems</li>
+            <li>Optional demographic information</li>
+            <li>Optional written responses</li>
+            <li>Basic technical submission data needed to process the form</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>3. What we do not intentionally collect</h2>
+          <ul>
+            <li>Your name</li>
+            <li>Your home address</li>
+            <li>Your phone number</li>
+            <li>Your Social Security number</li>
+            <li>Payment information</li>
+          </ul>
+          <p>Please do not include personal identifying information in any open-response field.</p>
+        </div>
+
+        <div class="card">
+          <h2>4. How your responses are used</h2>
+          <p>Survey responses may be used in aggregated and anonymized form for research, reporting, publications, internal analysis, future study design, and policy or business discussions related to media trust, content classification, and audience perception.</p>
+          <p>We look for patterns across responses. We do not publish your individual identity because we are not asking for it.</p>
+        </div>
+
+        <div class="card">
+          <h2>5. How submissions are processed</h2>
+          <p>Survey submissions are currently processed using a third-party form service. That means your responses may pass through that service so they can be delivered to Syncera Intelligence for review and analysis.</p>
+          <p>While we aim to use privacy-conscious tools, third-party services may have their own privacy and data-handling practices.</p>
+        </div>
+
+        <div class="card">
+          <h2>6. Cookies and analytics</h2>
+          <p>This site may use basic hosting or platform-level technical logs to operate and secure the site. At this stage, we are not using aggressive ad tracking or behavioral advertising tools on respondents.</p>
+        </div>
+
+        <div class="card">
+          <h2>7. Children’s privacy</h2>
+          <p>This survey is intended only for people who are <span class="highlight">13 years of age or older</span>. If you are under 13, please do not submit the survey.</p>
+        </div>
+
+        <div class="card">
+          <h2>8. Data security</h2>
+          <p>We take reasonable steps to protect submitted information, but no website or online transmission method can be guaranteed to be 100% secure. By participating, you understand that online submission always carries some level of risk.</p>
+        </div>
+
+        <div class="card">
+          <h2>9. Changes to this policy</h2>
+          <p>This Privacy Policy may be updated as Syncera Intelligence grows, adds tools, or changes research practices. The most current version will always appear on this page.</p>
+        </div>
+
+        <div class="card contact-box">
+          <h2>10. Contact</h2>
+          <p>If you have questions about this Privacy Policy or about a Syncera Intelligence study, you can contact:</p>
+          <p><span class="highlight">syncerahq@gmail.com</span></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>Syncera Intelligence · Privacy Policy</div>
+      <div>Chicago, IL · 2026</div>
+    </div>
+  </footer>
+</body>
+</html>
